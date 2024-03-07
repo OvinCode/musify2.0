@@ -1,0 +1,35 @@
+<!-- templates/album_details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Details</title>
+</head>
+<body>
+    <h1>Albums</h1>
+    {% for album in albums %}
+            <li><h3>{{ album.name }}</h3>
+
+                {% if album.images %}
+                    <img src="{{ album.images[0].url }}" alt="{{ album.name }} Image">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+                <button  onclick="getAlbumDetails('{{ album.id }}')">View Tracks</button>
+            </li>
+        {% endfor %}
+    <!-- Add more content or fetch additional details here -->
+    <script>
+        function getAlbumDetails(albumId) {
+            // You can use the albumId in your JavaScript logic
+            window.location.href = '/album/' + albumId;
+
+            // Redirect to a new page or perform any other action with the albumId
+            // window.location.href = '/album-details?albumId=' + albumId;
+        }
+    </script>
+
+
+</body>
+</html>

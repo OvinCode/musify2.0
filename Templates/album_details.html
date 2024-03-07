@@ -1,0 +1,33 @@
+<!-- templates/album_details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Details</title>
+</head>
+<body>
+    <h1>Tracks</h1>
+<ul>
+    {% for track in tracks %}
+        <li>
+            <h3>{{ track.name }}</h3>
+            <iframe src="https://open.spotify.com/embed/track/{{ track.id }}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </li>
+    {% endfor %}
+</ul>
+    <!-- Add more content or fetch additional details here -->
+    <!-- <script>
+        function getAlbumDetails(albumId) {
+            // You can use the albumId in your JavaScript logic
+            console.log('album ID:', albumId);
+            window.location.href = '/album/' + albumId;
+
+            // Redirect to a new page or perform any other action with the albumId
+            // window.location.href = '/album-details?albumId=' + albumId;
+        }
+    </script> -->
+
+
+</body>
+</html>
