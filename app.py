@@ -39,35 +39,26 @@ def get_token():
     return token
 
 
-
-# def get_artist():
-#     token = get_token()
-#     #fossils artist_id
-#     url = "https://api.spotify.com/v1/artists/3sLXzn7CKmzQ3r2pnYfzAo?si=HgBfcGKNSAOAQ45jDuqoIg"
-#     headers = {
-#         "Authorization": "Bearer " + token,
-#     }
-#     result = get(url, headers=headers)
-#     json_result = result.json()
-#     return json_result
-
-# artis = get_artist()
-# print(artis)
-
-@app.route('/search', methods=['POST'])
-def search_artist():
-    token = get_token()
-    s_artist = request.form.get('search')
-    print(s_artist)
-    url_sartist ='https://api.spotify.com/v1/search?q='+ s_artist +'&type=artist&market=IN&offset=0'
+def get_artist(artist):
+    token = get_token() 
+    url_artist ='https://api.spotify.com/v1/search?q='+ artist +'&type=artist&market=IN&offset=0'
     headers = {
         "Authorization": "Bearer " + token,
     }
-    result = get(url_sartist, headers=headers)
+    result = get(url_artist, headers=headers)
     json_result = result.json()
 
     artists = json_result.get('artists', {}).get('items', [])
-    return render_template('search_results.html', artists=artists)
+    return artists
+
+
+@app.route('/search', methods=['POST'])
+def search_artist():
+    search_artist = request.form.get('search')
+    artists = get_artist(search_artist)
+    return render_template('artists.html', artists=artists)
+    
+
 
 @app.route('/artist/<artist_id>')
 def get_albums(artist_id):
@@ -98,7 +89,7 @@ def get_tracks(album_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index1.html')
 
 @app.route('/form') 
 def form():
@@ -128,13 +119,7 @@ def add():
 def remove():
     return 'Hello, Flask!'
 
-@app.route('/play_song')
-def get_artist():
 
-
-
-
-    return 'Hello, Flask!'
 
 if __name__ == '__main__':
     app.run(debug=True)

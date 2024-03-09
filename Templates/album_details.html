@@ -5,17 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Album Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+
+        h1 {
+            color: #4285f4;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        li {
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 300px;
+            width: calc(33.33% - 40px);
+            transition: transform 0.3s ease;
+        }
+
+        li:hover {
+            transform: scale(1.05);
+        }
+
+        h3 {
+            margin: 10px 0;
+            color: #4285f4;
+        }
+
+        iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <h1>Tracks</h1>
-<ul>
-    {% for track in tracks %}
-        <li>
-            <h3>{{ track.name }}</h3>
-            <iframe src="https://open.spotify.com/embed/track/{{ track.id }}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        </li>
-    {% endfor %}
-</ul>
+    <ul>
+        {% for track in tracks %}
+            <li>
+                <h3>{{ track.name }}</h3>
+                <iframe src="https://open.spotify.com/embed/track/{{ track.id }}" allowtransparency="true" allow="encrypted-media"></iframe>
+            </li>
+        {% endfor %}
+    </ul>
+
     <!-- Add more content or fetch additional details here -->
     <!-- <script>
         function getAlbumDetails(albumId) {
@@ -27,7 +81,5 @@
             // window.location.href = '/album-details?albumId=' + albumId;
         }
     </script> -->
-
-
 </body>
 </html>

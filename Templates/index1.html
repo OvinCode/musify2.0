@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #212529; /* Black */
+            color: #28a745; /* Green */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #212529; /* Darker Black */
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #28a745; /* Green */
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 0px 20px 20px; /* Adjusted padding to accommodate fixed navbar */
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 300px;
+        }
+
+        button {
+            background-color: #28a745; /* Green */
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838; /* Darker Green */
+        }
+
+        .logo {
+            max-width: 40%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+       
+
+    <div>
+        <img src="{{ url_for('static', filename='images/pod-talk-logo.png')}}" alt="Logo" class="logo">
+
+    </div>
+       
+    
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Login</a>
+        <a href="#">Logout</a>
+        <a href="#">Profile</a>
+    </nav>
+
+    <section>
+        <h1>Musify</h1>
+       <h5>An Online Music Streaming Platform using Spotify Web API</h5>
+        <form action="/search" method="post">
+            <input type="text" name="search" placeholder="Search for band" />
+            <button type="submit">Search</button>
+        </form>
+    </section>
+</body>
+</html>

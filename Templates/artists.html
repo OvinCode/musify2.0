@@ -1,23 +1,21 @@
-<!-- templates/album_details.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Album Details</title>
+    <title>Search Results</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 20px;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #343a40;
+            background-color: #f4f4f4;
+            color: #333;
         }
 
         h1 {
             color: #4285f4;
             text-align: center;
-            margin-bottom: 30px;
         }
 
         ul {
@@ -26,23 +24,18 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
         }
 
         li {
-            padding: 20px;
-            border: 1px solid #dee2e6;
-            border-radius: 10px;
+            margin: 15px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
             background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
             max-width: 300px;
-            width: calc(33.33% - 40px);
-            transition: transform 0.3s ease;
-        }
-
-        li:hover {
-            transform: scale(1.05);
+            width: 100%;
         }
 
         h3 {
@@ -53,9 +46,8 @@
         img {
             max-width: 100%;
             height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            margin-bottom: 10px;
         }
 
         button {
@@ -74,31 +66,31 @@
     </style>
 </head>
 <body>
-    <h1>Albums</h1>
+    <h1>Search Results</h1>
     <ul>
-        {% for album in albums %}
+        {% for artist in artists %}
             <li>
-                <h3>{{ album.name }}</h3>
+                <h3>{{ artist.name }}</h3>
 
-                {% if album.images %}
-                    <img src="{{ album.images[0].url }}" alt="{{ album.name }} Image">
+                {% if artist.images %}
+                    <img src="{{ artist.images[0].url }}" alt="{{ artist.name }} Image">
                 {% else %}
                     <p>No image available</p>
                 {% endif %}
 
-                <button onclick="getAlbumDetails('{{ album.id }}')">View Tracks</button>
+                <button onclick="getArtistDetails('{{ artist.id }}')">View Albums</button>
             </li>
         {% endfor %}
     </ul>
 
-    <!-- Add more content or fetch additional details here -->
     <script>
-        function getAlbumDetails(albumId) {
-            // You can use the albumId in your JavaScript logic
-            window.location.href = '/album/' + albumId;
+        function getArtistDetails(artistId) {
+            // You can use the artistId in your JavaScript logic
+            console.log('Artist ID:', artistId);
+            window.location.href = '/artist/' + artistId;
 
-            // Redirect to a new page or perform any other action with the albumId
-            // window.location.href = '/album-details?albumId=' + albumId;
+            // Redirect to a new page or perform any other action with the artistId
+            // window.location.href = '/artist-details?artistId=' + artistId;
         }
     </script>
 </body>
