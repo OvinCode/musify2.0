@@ -1,4 +1,4 @@
-# musify2.
+# musify2.0
 
 ## Setup
 
